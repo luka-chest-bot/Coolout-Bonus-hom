@@ -49,6 +49,14 @@ def send_message(chat_id, text):
     if not BOT_TOKEN: return
     requests.post(f"https://api.telegram.org/bot{BOT_TOKEN}/sendMessage", json={"chat_id": chat_id, "text": text})
 
+def set_webhook():
+    if not BOT_TOKEN:
+        print("BOT_TOKEN не задан")
+        return
+    url = f"{WEBAPP_URL}/telegram/webhook"
+    requests.post(f"https://api.telegram.org/bot{BOT_TOKEN}/setWebhook", json={"url": url})
+    print(f"Webhook set to {url}")
+
 # --- Генерация кодов (для админа) ---
 def generate_codes(amount):
     codes = []
