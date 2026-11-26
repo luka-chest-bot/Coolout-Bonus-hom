@@ -143,5 +143,8 @@ def telegram_webhook():
 
 init_db()
 
+init_db()
+set_webhook() # <--- ДОБАВЛЯЕМ ЭТУ СТРОЧКУ
+
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=int(os.getenv("PORT", 5000)))
